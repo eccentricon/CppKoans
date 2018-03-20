@@ -6,13 +6,15 @@ an attempt to write such koans for C/C++.
 
 Some ideas were taken from [PointerKoans](https://github.com/paytonrules/PointerKoan).
 
-### Prerequesites
+### Prerequisites
+
 You will need [CMake](http://cmake.org/).
 
 And of course a C++ compiler.
 I just tested it with a recent GCC.
 
-## How to walk the path to enlightment
+## How to walk the path to enlightenment
+
 1. Get the sources
 
         git clone git://github.com/torbjoernk/CppKoans.git
@@ -41,7 +43,7 @@ Now follow the instructions printed from the very beginning.
 The files, you will need to edit are in `CppKoans/koans`.
 Each time you saved a file and want to rerun the koans, you need to compile it
 first.
-Thus, walking the path to enlightment is a repetition of these steps:
+Thus, walking the path to enlightenment is a repetition of these steps:
 
 1. Edit and save a file in `CppKoans/koans`
 
@@ -51,13 +53,14 @@ Thus, walking the path to enlightment is a repetition of these steps:
 
 
 ## Adding further Koans
+
 ### To existing episodes
 
 Just define a new `private void` function without parameters in the bottom
 section of the episode's header file it should belong to.
 Then go to the implementation file of that episode and implement your new koan.
 Finally add your newly created koan to the `run()` function in the header file
-of that episode and increase the `num_tests` counter by one (or whatevery amount
+of that episode and increase the `num_tests` counter by one (or whatever number
 of koans you added).
 
 ### New episodes
@@ -72,5 +75,6 @@ After copying and renaming of `~/headers/koanXX_sample_koans.hpp` and
 3. enable and activate the new episode in `~/cppkoans.cpp`
 
 
-## Licence
+## License
+
 MIT License Copyright 2012 Torbjörn Klatt - opensource eht torbjoern minus klatt dot de
