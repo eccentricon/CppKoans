@@ -78,6 +78,7 @@ void Koan05_pointers::they_are_not_almighty()
   *wannabe_powerful = another_int;  // OK
   ASSERT_EQUAL( another_int, 22 );
   // wannabe_powerful = &another_int;  // This should be a compiler error.
+  // The end.
 }
 
 // EOF
