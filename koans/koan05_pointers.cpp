@@ -29,8 +29,13 @@ void Koan05_pointers::they_are_just_variables()
 {
   int an_int = 42;
   int *pointer_to_an_int = &an_int;
-  ASSERT_EQUAL( *pointer_to_an_int, FILL_THE_NUMBER_IN );
-  ASSERT_EQUAL( pointer_to_an_int, THIS_IS_NOT_NULL );
+  ASSERT_EQUAL( *pointer_to_an_int, 42 );
+  ASSERT_EQUAL( pointer_to_an_int, &an_int );
+  std::cout << "address of an_int:\t\t" << &an_int << std::endl
+      << "value of pointer_to_an_int:\t" << pointer_to_an_int << std::endl
+      << "an_int:\t\t\t" << an_int << std::endl
+      << "*pointer_to_an_int:\t" << *pointer_to_an_int << std::endl
+      << "*&an_int:\t\t" << *&an_int << std::endl;
 }
 
 void Koan05_pointers::they_are_really_just_variables()
@@ -38,35 +43,41 @@ void Koan05_pointers::they_are_really_just_variables()
   int an_int = 42;
   int another_int = 21;
   int *pointer_to_an_int = &an_int;
-  ASSERT_EQUAL( *pointer_to_an_int, FILL_THE_NUMBER_IN );
-  ASSERT_EQUAL( pointer_to_an_int, THIS_IS_NOT_NULL );
+  ASSERT_EQUAL( *pointer_to_an_int, an_int );
+  ASSERT_EQUAL( pointer_to_an_int, &an_int );
   pointer_to_an_int = &another_int;
-  ASSERT_EQUAL( *pointer_to_an_int, FILL_THE_NUMBER_IN );
-  ASSERT_EQUAL( pointer_to_an_int, THIS_IS_NOT_NULL );
+  ASSERT_EQUAL( *pointer_to_an_int, another_int );
+  ASSERT_EQUAL( pointer_to_an_int, &another_int );
 }
 
 void Koan05_pointers::they_have_power()
 {
   int an_int = 42;
   int *powerful_pointer = &an_int;
-  ASSERT_EQUAL( *powerful_pointer, FILL_THE_NUMBER_IN );
-  ASSERT_EQUAL( powerful_pointer, THIS_IS_NOT_NULL );
+  ASSERT_EQUAL( *powerful_pointer, 42 );
+  ASSERT_EQUAL( powerful_pointer, &an_int );
   *powerful_pointer = 21;
-  ASSERT_EQUAL( an_int, FILL_THE_NUMBER_IN );
-  ASSERT_EQUAL( powerful_pointer, THIS_IS_NOT_NULL );
+  ASSERT_EQUAL( an_int, 21 );
+  ASSERT_EQUAL( powerful_pointer, &an_int );
 }
 
 void Koan05_pointers::they_are_not_almighty()
 {
-  const int an_int = 42;
-  const int *wannabe_powerful = &an_int;
-  ASSERT_EQUAL( *wannabe_powerful, FILL_THE_NUMBER_IN );
-  ASSERT_EQUAL( wannabe_powerful, THIS_IS_NOT_NULL );
+  int an_int = 42;
+  int * const wannabe_powerful = &an_int;
+  ASSERT_EQUAL( *wannabe_powerful, 42 );
+  ASSERT_EQUAL( wannabe_powerful, &an_int );
   // Will this work? Think about it!
   // What do you need to change to make it work?
-//   *wannabe_powerful = 21;
-  ASSERT_EQUAL( an_int, FILL_THE_NUMBER_IN );
-  ASSERT_EQUAL( wannabe_powerful, THIS_IS_NOT_NULL );
+  *wannabe_powerful = 21;
+  // See https://www.cprogramming.com/tutorial/const_correctness.html
+  ASSERT_EQUAL( an_int, 21 );
+  ASSERT_EQUAL( wannabe_powerful, &an_int );
+  // However, we can't change the "what it points to" (the address)
+  int another_int = 22;
+  *wannabe_powerful = another_int;  // OK
+  ASSERT_EQUAL( another_int, 22 );
+  // wannabe_powerful = &another_int;  // This should be a compiler error.
 }
 
 // EOF
